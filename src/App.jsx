@@ -14,13 +14,6 @@ function App() {
     if (symbol === "clear") {
       setDisplay("");
       setExpression("0");
-    } else if (symbol === "negative") {
-      if (display === "") return;
-      setDisplay(
-        display.toString().charAt(0) === "-"
-          ? display.slice(1)
-          : "-" + display
-      );
     } else if (symbol === "percent") {
       if (display === "") return;
       setDisplay((parseFloat(display) / 100).toString());
@@ -76,146 +69,41 @@ function App() {
 
   return (
     <>
-      <div className="container">
-        <h1>Calculator Application</h1>
-        <div id="calculator">
-          <div id="display" style={{ textAlign: "right" }}>
-            <div id="answer">{display}</div>
-            <div id="expression">{expression}</div>
+      <div className="">
+        <h3 className="text-3xl text-black">Calculator</h3>
+        <div id="calculator" className="flex flex-col w-96">
+          <div id="display">
+            <div id="expression" className="bg-black h-10 flex items-end justify-end px-2 text-xl text-white">{expression}</div>
+            <div id="answer" className="bg-black h-10 flex items-end justify-end px-2 text-xl text-white">{display}</div>
           </div>
-          <button
-            id="clear"
-            onClick={() => buttonPress("clear")}
-            className="light-gray"
-          >
-            C
-          </button>
-          <button
-            id="negative"
-            onClick={() => buttonPress("negative")}
-            className="light-gray"
-          >
-            +/-
-          </button>
-          <button
-            id="percentage"
-            onClick={() => buttonPress("percentage")}
-            className="light-gray"
-          >
-            %
-          </button>
-          <button
-            id="divide"
-            onClick={() => buttonPress("/")}
-            className="yellow"
-          >
-            /
-          </button>
-          <button
-            id="seven"
-            onClick={() => buttonPress("7")}
-            className="dark-gray"
-          >
-            7
-          </button>
-          <button
-            id="eight"
-            onClick={() => buttonPress("8")}
-            className="dark-gray"
-          >
-            8
-          </button>
-          <button
-            id="nine"
-            onClick={() => buttonPress("9")}
-            className="dark-gray"
-          >
-            9
-          </button>
-          <button
-            id="multiply"
-            onClick={() => buttonPress("*")}
-            className="yellow"
-          >
-            *
-          </button>
-          <button
-            id="four"
-            onClick={() => buttonPress("4")}
-            className="dark-gray"
-          >
-            4
-          </button>
-          <button
-            id="five"
-            onClick={() => buttonPress("5")}
-            className="dark-gray"
-          >
-            5
-          </button>
-          <button
-            id="six"
-            onClick={() => buttonPress("6")}
-            className="dark-gray"
-          >
-            6
-          </button>
-          <button
-            id="subtract"
-            onClick={() => buttonPress("-")}
-            className="yellow"
-          >
-            -
-          </button>
-          <button
-            id="one"
-            onClick={() => buttonPress("1")}
-            className="dark-gray"
-          >
-            1
-          </button>
-          <button
-            id="two"
-            onClick={() => buttonPress("2")}
-            className="dark-gray"
-          >
-            2
-          </button>
-          <button
-            id="three"
-            onClick={() => buttonPress("3")}
-            className="dark-gray"
-          >
-            3
-          </button>
-          <button
-            id="add"
-            onClick={() => buttonPress("+")}
-            className="yellow"
-          >
-            +
-          </button>
-          <button
-            id="zero"
-            onClick={() => buttonPress("0")}
-            className="dark-gray"
-          >
-            0
-          </button>
-          <button
-            id="decimal"
-            onClick={() => buttonPress(".")}
-            className="dark-gray"
-          >
-            .
-          </button>
-          <button
-            id="equals"
-            onClick={() => buttonPress("=")}
-            className="yellow"
-          >
-            =
-          </button>
+          <div className="flex">
+            <button id="clear" onClick={() => buttonPress("clear")} className="bg-orange-500  w-6/12 text-white rounded-none border-black border-2">AC</button>
+            <button id="percentage" onClick={() => buttonPress("percentage")} className="rounded-none bg-white text-black w-3/12 border-black border-2">%</button>
+            <button id="divide" onClick={() => buttonPress("/")} className="rounded-none bg-white text-black border-black w-3/12 border-2">/</button>
+          </div>
+          <div className="grid grid-cols-4">
+              <button id="seven" onClick={() => buttonPress("7")} className="rounded-none bg-white text-black border-black border-2">7</button>
+              <button id="eight" onClick={() => buttonPress("8")} className="rounded-none bg-white text-black border-black border-2">8</button>
+              <button id="nine" onClick={() => buttonPress("9")} className="rounded-none bg-white text-black border-black border-2">9</button>
+              <button id="multiply" onClick={() => buttonPress("*")} className="rounded-none bg-white text-black border-black border-2">x</button>
+          </div>
+         <div className="grid grid-cols-4">
+             <button id="four" onClick={() => buttonPress("4")} className="rounded-none bg-white text-black border-black border-2">4</button>
+             <button id="five" onClick={() => buttonPress("5")} className="rounded-none bg-white text-black border-black border-2">5</button>
+             <button id="six" onClick={() => buttonPress("6")} className="rounded-none bg-white text-black border-black border-2">6</button>
+             <button id="subtract" onClick={() => buttonPress("-")} className="rounded-none bg-white text-black border-black border-2">-</button>
+         </div>
+         <div className="grid grid-cols-4">
+            <button id="one" onClick={() => buttonPress("1")} className="rounded-none bg-white text-black  border-black border-2">1</button>
+            <button id="two" onClick={() => buttonPress("2")} className="rounded-none bg-white text-black border-black border-2">2</button>
+            <button id="three" onClick={() => buttonPress("3")} className="rounded-none bg-white text-black border-black border-2">3</button>
+            <button id="add" onClick={() => buttonPress("+")} className="rounded-none bg-white text-black  border-black border-2">+</button>
+          </div>
+          <div className="flex">
+            <button id="zero" onClick={() => buttonPress("0")} className="rounded-none bg-white text-black w-6/12 border-black border-2">0</button>
+            <button id="decimal" onClick={() => buttonPress(".")} className="rounded-none bg-white text-black w-3/12 border-black border-2">.</button>
+            <button id="equals" onClick={() => buttonPress("=")} className="rounded-none w-3/12 bg-green-400 text-white  border-black border-2">=</button>
+          </div>
         </div>
       </div>
     </>
